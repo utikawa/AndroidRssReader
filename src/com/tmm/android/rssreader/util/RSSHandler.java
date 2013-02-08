@@ -5,7 +5,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -155,9 +154,11 @@ public class RSSHandler extends DefaultHandler {
 			XMLReader xr = sp.getXMLReader();
 
 			url = new URL(feedUrl);
-			
+			InputSource is = new InputSource(url.openStream());
+//			is.setEncoding("ISO-8859-1");
+
 			xr.setContentHandler(this);
-			xr.parse(new InputSource(url.openStream()));
+			xr.parse(is);
 
 
 		} catch (IOException e) {

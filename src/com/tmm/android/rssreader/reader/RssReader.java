@@ -35,10 +35,7 @@ public class RssReader {
 	 * 
 	 * @return List<JSONObject> - suitable for the List View activity
 	 */
-	public static List<JSONObject> getLatestRssFeed(){
-		String feed = "http://globoesporte.globo.com/dynamo/futebol/times/vasco/rss2.xml";
-		
-		
+	public static List<JSONObject> getLatestRssFeed(String feed){
 		RSSHandler rh = new RSSHandler();
 		List<Article> articles =  rh.getLatestArticles(feed);
 		Log.e("RSS ERROR", "Number of articles " + articles.size());

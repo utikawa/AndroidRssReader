@@ -14,6 +14,7 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.Spanned;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,7 @@ public class RssListAdapter extends ArrayAdapter<JSONObject> {
 		
         try {
         	
-        	if (jsonImageText.get("imageLink") != null){
+        	if (jsonImageText.opt("imageLink") != null){
         		
         		System.out.println("XXXX Link found!");
         		String url = (String) jsonImageText.get("imageLink");
@@ -70,6 +71,7 @@ public class RssListAdapter extends ArrayAdapter<JSONObject> {
         	//handle exception here - maybe no access to web
         }
         catch (JSONException e) {
+        	Log.e("JSON ERR", e.toString());
         	textView.setText("JSON Exception");
         }
 
